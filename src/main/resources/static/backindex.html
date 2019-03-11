@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>后台首页</title>
+    <link rel="shortcut icon" href="ico/index.ico" mce_href="ico/index.ico" type="image/x-icon">
+    <link rel="stylesheet" href="bootstrap-3.3.7/dist/css/bootstrap.css">
+    <script type="text/javascript" src="js/jquery-2.1.4.js"></script>
+    <script type="text/javascript" src="js/backindex.js"></script>
+    <script src="bootstrap-3.3.7/dist/js/bootstrap.js"></script>
+    <style>
+        #student_fenye{
+            padding-left: 350px;
+        }
+        #content{
+            margin-left: -125px !important;
+        }
+        #bodys{
+            width: 1475px;
+        }
+    </style>
+</head>
+<body>
+<div class="container" id="bodys">
+    <h3 class="text-center">
+        首页
+    </h3>
+    <div class="row clearfix">
+        <div class="col-md-2 column">
+            <ul class="nav nav-pills nav-stacked">
+                <li><a name="index">首页</a></li>
+                <!-- 这里的active属性就是使得所在的li的背景色变为蓝色-->
+                <li><a href="#" name="student">学生管理</a></li>
+                <li><a href="#" name="teacher">教师管理</a></li>
+                <li><a href="#" name="day">实习日记管理</a></li>
+                <li><a href="#" name="week">实习周记管理</a></li>
+                <li><a href="#" name="month">实习月记管理</a></li>
+                <li><a href="#" name="summary">实习总结管理</a></li>
+            </ul>
+        </div>
+
+        <div class="col-md-10 column">
+            <div id="student" style="display: none">
+                <h3 class="text-center">
+                    学生管理
+                </h3>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>
+                            学号
+                        </th>
+                        <th>
+                            姓名
+                        </th>
+                        <th>
+                            密码
+                        </th>
+                        <th>
+                            班级
+                        </th>
+                        <th>
+                            家庭地址
+                        </th>
+                        <th>
+                            学院
+                        </th>
+                        <th>
+                            手机号码
+                        </th>
+                        <th>
+                            性别
+                        </th>
+                        <th>
+                            专业
+                        </th>
+                        <th>
+                            年龄
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+                <ul class="pagination">
+                    <li>
+                        <a href="#" name="prev">上一页</a>
+                    </li>
+                    <li>
+                        <a href="#" name="next">下一页</a>
+                    </li>
+                </ul>
+            </div>
+            <div id="summary" style="display: none">
+                <h3 class="text-center">
+                    实习总结管理
+                </h3>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>
+                            学号
+                        </th>
+                        <th>
+                            姓名
+                        </th>
+                        <th>
+                            班级
+                        </th>
+
+                        <th>
+                            学院
+                        </th>
+                        <th>
+                            专业
+                        </th>
+                        <th>
+                            提交时间
+                        </th>
+                        <th>
+                            实习总结
+                        </th>
+                        <th>
+                            是否批阅
+                        </th>
+                        <th>
+                            操作
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+                <ul class="pagination">
+                    <li>
+                        <a href="#" name="prev">上一页</a>
+                    </li>
+                    <li>
+                        <a href="#" name="next">下一页</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="alert alert-success alert-dismissable">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+        <h4>
+            注意!
+        </h4> <strong>Warning!</strong> Best check yo self, you're not looking too good. <a href="#" class="alert-link">alert link</a>
+    </div>
+</div>
+</body>
+</html>

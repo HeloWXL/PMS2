@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>实习日记</title>
+    <link rel="shortcut icon" href="ico/index.ico" mce_href="ico/index.ico" type="image/x-icon">
+    <link rel="stylesheet" href="bootstrap-3.3.7/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="layui-v2.4.3/layui/css/layui.css" media="all">
+    <script type="text/javascript" src="js/jquery-2.1.4.js"></script>
+    <script src="bootstrap-3.3.7/dist/js/bootstrap.js"></script>
+    <script src="layui-v2.4.3/layui/layui.js"></script>
+    <script>
+
+        $(function () {
+            var student,sno,profession,cls,apartment;
+            $.ajax({
+                url: "student/getStudentSession",
+                data: {"studentBean": "studentsession"},
+                type: "post",
+                dataType: "json",
+                async: false,
+                success: function (ret) {
+                    if(ret==null){
+                        $("#notlogin").show();
+                        $("#islogin").hide();
+                        alert("未登录")
+                    }else{
+                        $("#islogin").show();
+                        $("#notlogin").hide();
+                        $("#usernames").html(ret.studentName)
+
+                        student =  $("#username").val(ret.studentName);
+                        sno =   $("#sno").val(ret.studentNo);
+                        profession= $("#profession").val(ret.studentProfession);
+                        cls= $("#cls").val(ret.studentClass);
+                        apartment= $("#apartment").val(ret.studentApartment);
+                        console.log("已经登录了")
+                    }
+
+
+                }
+            })
+
+            $("button[name='submits']").click(function () {
+
+                var Day = {
+                    studentName: $("#username").val(),
+                    studentNo : $("#sno").val(),
+                    studentProfession :$("#profession").val(),
+                    studentClass : $("#cls").val(),
+                    studentApartment : $("#apartment").val(),
+                    daySummaryDatetime:$("#test1").val(),
+                    daySummary: $("textarea").val()
+                }
+
+                $.ajax({
+                    url: "day/insertDaySummary",
+                    data:JSON.stringify(Day),
+                    type: "post",
+                    contentType:"application/json",
+                    dataType: "json",
+                    async: false,
+                    success:function (ret) {
+                        if(ret==1){
+                            alert("提交成功!!!")
+                            $("#message").show();
+                        }else{
+                            alert("提交失败！！！")
+                        }
+                    }
+                })
+            })
+
+        })
+
+    </script>
+    <style>
+        .summary{
+            padding-top: 95px;
+        }
+        .submits{
+            text-align: center;
+        }
+        input{
+            margin: 4px;
+        }
+        #date{
+            padding-left: 14px;
+        }
+        .header{
+            margin-top: 40px;
+        }
+
+         #logo{
+             font-family: 楷体;
+         }
+        #myinfo{
+            position: absolute;
+            right: 55px;
+        }
+        #isnotlogin{
+            position: absolute;
+            right: 55px;
+        }
+    </style>
+</head>
+<body>
+<div class="navs">
+    <nav class="navbar navbar-inverse" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="index.html" id="logo">泉州师范学院实习管理系统</a>
+            </div>
+
+            <div id="notlogin">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#">首页</a></li>
+                    <li><a href="#">公司</a></li>
+                    <li><a href="#">我要实习</a></li>
+                    <li class="dropdown" id="isnotlogin">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            请登录 <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="login.html">登录</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">注册</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div style="display: none" id="islogin">
+                <ul class="nav navbar-nav" id="list">
+                    <li class="active"><a href="#">首页</a></li>
+                    <li><a href="#">公司</a></li>
+                    <li><a href="#">我要实习</a></li>
+                    <li class="dropdown" id="myinfo">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="usernames">
+                            用户名 <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">我的信息</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">简历管理</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">实习管理</a></li>
+                            <li class="divider"></li>
+                            <li><a  href="/student/removeStudentSession">退出登录</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
+<div class="header">
+    <div class="col-md-12 column">
+        <h3 class="text-center text-info">
+            实习日记
+        </h3>
+    </div>
+</div>
+<div class="container">
+    <div class="row clearfix">
+        <div class="col-md-2 column">
+
+        </div>
+        <div class="col-md-10 column">
+
+            <div>
+                <form role="form" class="summary">
+                    <div class="form-group">
+                        <label for="username" class="col-sm-2 control-label">姓名</label>
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control" id="username" placeholder="请输入名字" width="20px;">
+                        </div>
+
+                        <label for="sno" class="col-sm-2 control-label">学号</label>
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control" id="sno" placeholder="请输入学号" width="20px;">
+                        </div>
+
+                        <label for="profession" class="col-sm-2 control-label">专业</label>
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control" id="profession" placeholder="请输入专业" width="20px;">
+                        </div>
+
+                        <label for="cls" class="col-sm-2 control-label">班级</label>
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control" id="cls" placeholder="请输入班级" width="20px;">
+                        </div>
+
+                        <label for="apartment" class="col-sm-2 control-label">学院</label>
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control" id="apartment" placeholder="请输入学院" width="20px;">
+                        </div>
+
+                        <label for="apartment" class="col-sm-2 control-label">日期</label>
+                        <div class="layui-inline" id="date"> <!-- 注意：这一层元素并不是必须的 -->
+                            <input type="text" class="layui-input" id="test1">
+                        </div></br></br>
+
+                        <label >总结</label>
+                        <textarea class="form-control" rows="4"></textarea>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+        <div class="submits">
+            <button type="button" class="btn btn-danger btn-lg active" name="submits">提交</button>
+        </div>
+    </div>
+    <div class="message">
+        <div class="alert alert-success" style="display: none" id="message">提交成功。</div>
+    </div>
+
+</div>
+<script>
+    layui.use('laydate', function(){
+        var laydate = layui.laydate;
+
+        //执行一个laydate实例
+        laydate.render({
+            elem: '#test1' //指定元素
+        });
+    });
+</script>
+</body>
+</html>

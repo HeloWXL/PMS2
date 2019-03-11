@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+    <script type="text/javascript" src="js/jquery-2.1.4.js"></script>
+    <link rel="stylesheet" href="bootstrap-3.3.7/dist/css/bootstrap.css">
+    <script src="bootstrap-3.3.7/dist/js/bootstrap.js"></script>
+    <script>
+        $(function () {
+            $.ajax({
+                url: "student/getStudentSession",
+                data: {"studentBean": "studentsession"},
+                type: "post",
+                dataType: "json",
+                async: false,
+                success: function (ret) {
+                    if(ret==null){
+                        $("#notlogin").show();
+                        $("#islogin").hide();
+                        console.log("未登录")
+                    }else{
+                        $("#islogin").show();
+                        $("#notlogin").hide();
+                        $("#usernames").html(ret.studentName)
+                        console.log("已经登录了")
+                    }
+                }
+            })
+        })
+
+    </script>
+    <style>
+        #logo{
+            font-family: 楷体;
+        }
+        #myinfo{
+            position: absolute;
+            right: 55px;
+        }
+        #isnotlogin{
+            position: absolute;
+            right: 55px;
+        }
+        .thumbnails li{
+            float: left;
+        }
+        li{
+            list-style-type: none;
+            margin-left: 10px;
+            margin-top: 10px;
+        }
+        .span4{
+            width: 405px!important;
+            height: 375px!important;
+        }
+        .content{
+            margin-left: 50px;
+        }
+        em{
+            margin-left: 1px;
+            margin-right: 1px;
+        }
+        .thumbnail p{
+            color: #9d9d9d;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="navs">
+        <nav class="navbar navbar-inverse" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="index.html" id="logo">泉州师范学院实习管理系统</a>
+            </div>
+
+            <div id="notlogin">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#">首页</a></li>
+                    <li><a href="#">公司</a></li>
+                    <li><a href="#">我要实习</a></li>
+                    <li class="dropdown" id="isnotlogin">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            请登录 <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="login.html">登录</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">注册</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div style="display: none" id="islogin">
+                <ul class="nav navbar-nav" id="list">
+                    <li class="active"><a href="#">首页</a></li>
+                    <li><a href="#">公司</a></li>
+                    <li><a href="#">我要实习</a></li>
+                    <li class="dropdown" id="myinfo">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="usernames">
+                            用户名 <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">我的信息</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">简历管理</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">实习管理</a></li>
+                            <li class="divider"></li>
+                            <li><a  href="/student/removeStudentSession">退出登录</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    </div>
+    <div class="content">
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span12">
+                    <ul class="thumbnails">
+                        <li class="span4">
+                            <div class="thumbnail">
+                                <img alt="300x200" src="images/兴业银行.png" />
+                                <div class="caption">
+                                    <h3>
+                                       公司名称
+                                    </h3>
+                                    <p>
+                                        公司所在地点：<span>泉州</span> <em>|</em>
+                                        人数规模：<span>100-1000</span><br>
+                                        类别：<span>计算机</span><em>|</em>
+                                        官网：<span><a href="www.ijihfus.com">www.ijihfus.com</a></span>
+                                    </p>
+                                    <p>
+                                        <a class="btn btn-primary" href="#" name="公司ID">查看</a> <a class="btn" href="#">分享</a>
+                                    </p>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

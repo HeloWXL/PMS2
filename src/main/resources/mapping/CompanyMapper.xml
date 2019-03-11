@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.pms2.yushuting.mapper.CompanyMapper" >
+  <resultMap id="BaseResultMap" type="com.pms2.yushuting.model.Company" >
+    <id column="company_id" property="companyId" jdbcType="INTEGER" />
+    <result column="company_name" property="companyName" jdbcType="VARCHAR" />
+    <result column="location" property="location" jdbcType="VARCHAR" />
+    <result column="people_count" property="peopleCount" jdbcType="VARCHAR" />
+    <result column="company_image" property="companyImage" jdbcType="VARCHAR" />
+    <result column="category" property="category" jdbcType="VARCHAR" />
+    <result column="likeman" property="likeman" jdbcType="VARCHAR" />
+    <result column="like_man_phone" property="likeManPhone" jdbcType="VARCHAR" />
+    <result column="url_address" property="urlAddress" jdbcType="VARCHAR" />
+    <result column="avg_salary" property="avgSalary" jdbcType="VARCHAR" />
+  </resultMap>
+</mapper>

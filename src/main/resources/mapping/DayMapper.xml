@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.pms2.yushuting.mapper.DayMapper" >
+  <resultMap id="BaseResultMap" type="com.pms2.yushuting.model.Day" >
+    <id column="day_id" property="dayId" jdbcType="INTEGER" />
+    <result column="student_no" property="studentNo" jdbcType="INTEGER" />
+    <result column="student_class" property="studentClass" jdbcType="VARCHAR" />
+    <result column="student_profession" property="studentProfession" jdbcType="VARCHAR" />
+    <result column="student_apartment" property="studentApartment" jdbcType="VARCHAR" />
+    <result column="day_summary" property="daySummary" jdbcType="VARCHAR" />
+    <result column="day_summary_datetime" property="daySummaryDatetime" jdbcType="TIMESTAMP" />
+    <result column="is_read" property="isRead" jdbcType="VARCHAR" />
+    <result column="student_name" property="studentName" jdbcType="VARCHAR" />
+  </resultMap>
+</mapper>
